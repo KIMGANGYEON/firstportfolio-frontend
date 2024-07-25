@@ -1,0 +1,28 @@
+.notfound {
+  font-family: "Noto Sans KR", sans-serif;
+  .notfound-box {
+    h1 {
+      padding: 50px 0px 0px 50px;
+      font-weight: bold;
+      font-size: 50px;
+    }
+    .notfound-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      button {
+        margin-top: 130px;
+        font-size: 25px;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 15px;
+        font-weight: bold;
+        transition: all 0.3s;
+        &:hover {
+          color: white;
+          background-color: var(--purple);
+        }
+      }
+    }
+  }
+}
