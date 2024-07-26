@@ -17,7 +17,6 @@ const Navbar = () => {
         </div>
         <div className="navbar-more-item">
           <h2>내 정보 수정</h2>
-          <h2>상품 업로드</h2>
           <h2>장바구니</h2>
           <h2>주문내역</h2>
         </div>
