@@ -1,6 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../utils/axios";
 
+export const authUser = createAsyncThunk(
+  "user/authUser",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axiosInstance.get("/users/auth");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.response.data || error.message);
+    }
+  }
+);
+
 export const joinUser = createAsyncThunk(
   "user/joinUser",
   async (body, thunkAPI) => {
@@ -20,20 +33,6 @@ export const loginUser = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const response = await axiosInstance.post(`/users/login`, body);
-
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error.response.data || error.message);
-    }
-  }
-);
-
-export const authUser = createAsyncThunk(
-  "user/authUser",
-  async (_, thunkAPI) => {
-    try {
-      const response = await axiosInstance.get("/users/auth");
 
       return response.data;
     } catch (error) {

@@ -1,10 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { editUser } from "../../../store/thunkFunctions";
 import { useNavigate } from "react-router-dom";
 
-const EditUser = () => {
+const EditPassword = () => {
   const user = useSelector((state) => state.user?.userData);
   console.log(user);
   const navigate = useNavigate();
@@ -26,7 +25,7 @@ const EditUser = () => {
     };
 
     try {
-      await dispatch(editUser(body)).unwrap();
+      //   await dispatch(editUser(body)).unwrap();
       reset();
       navigate("/");
     } catch (error) {
@@ -48,7 +47,7 @@ const EditUser = () => {
     <section>
       <div className="join">
         <div className="join-header">
-          <h1>회원 정보 수정</h1>
+          <h1>비밀 번호 변경</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -99,11 +98,11 @@ const EditUser = () => {
           <button type="submit">회원 정보 수정</button>
         </form>
         <p>
-          <a href="/edituser/password">비밀번호 변경</a>
+          <a href="/login">비밀번호 변경</a>
         </p>
       </div>
     </section>
   );
 };
 
-export default EditUser;
+export default EditPassword;

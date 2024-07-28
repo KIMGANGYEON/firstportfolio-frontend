@@ -13,12 +13,12 @@ const Login = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = ({ email, password }) => {
+  const onSubmit = async ({ email, password }) => {
     const body = {
       email,
-
       password,
     };
+
     dispatch(loginUser(body));
     reset();
   };

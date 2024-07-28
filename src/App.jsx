@@ -13,6 +13,7 @@ import ProtectedPage from "./router/pages/ProtectedPage/ProtectedPage";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotAuthRoutes from "./components/NotAuthRoutes";
 import EditUser from "./router/pages/EditUser/EditUser";
+import EditPassword from "./router/pages/EditUser/EditPassword/EditPassword";
 
 function Layout() {
   return (
@@ -36,9 +37,12 @@ function App() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.user?.isAuth);
   const { pathname } = useLocation();
+
   useEffect(() => {
     if (isAuth) {
-      dispatch(authUser());
+      setTimeout(() => {
+        dispatch(authUser());
+      }, 500);
     }
   }, [isAuth, pathname, dispatch]);
 
@@ -50,6 +54,7 @@ function App() {
         <Route element={<ProtectedRoutes isAuth={isAuth} />}>
           <Route path="/protected" element={<ProtectedPage />} />
           <Route path="/edituser" element={<EditUser />} />
+          <Route path="/edituser/password" element={<EditPassword />} />
         </Route>
 
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
