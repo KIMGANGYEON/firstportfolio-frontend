@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   authUser,
   editUser,
+  editUserPassword,
   joinUser,
   loginUser,
   logoutUser,
@@ -40,7 +41,8 @@ const userSlice = createSlice({
       })
       //Login
       .addCase(loginUser.pending, (state) => {
-        state.isAuth = true;
+        state.isLoading = true;
+        state.isAuth = false;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -96,6 +98,21 @@ const userSlice = createSlice({
         toast.info("회원정보가 수정되었습니다");
       })
       .addCase(editUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      })
+      //Edit User Password
+      .addCase(editUserPassword.pending, (state) => {
+        state.isAuth = true;
+      })
+      .addCase(editUserPassword.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userData = action.payload;
+        state.isAuth = true;
+        toast.info("비밀번호가 수정되었습니다");
+      })
+      .addCase(editUserPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         toast.error(action.payload);

@@ -69,3 +69,17 @@ export const editUser = createAsyncThunk(
     }
   }
 );
+
+export const editUserPassword = createAsyncThunk(
+  "user/editUserPassword",
+  async (body, thunkAPI) => {
+    try {
+      const response = await axiosInstance.post(`/users/edit/password`, body);
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.response.data || error.message);
+    }
+  }
+);

@@ -1,0 +1,64 @@
+.selfdevelopment {
+  @include korean;
+  margin-top: 70px;
+  padding-left: 100px;
+  width: 100%;
+  padding-right: 10px;
+  .selfdevelopment-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    h1 {
+      margin-right: 10px;
+      font-size: 50px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  .scroll-box {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    .selfdevelopment-box {
+      display: flex;
+      width: 550vw;
+      gap: 10px;
+      .book-box {
+        padding: 15px;
+        border: 3px solid black;
+        width: 100vw;
+        position: relative;
+        cursor: pointer;
+        img {
+          width: 80%;
+          height: 80%;
+          border: 2px solid black;
+        }
+        h1 {
+          border-top: 1px solid black;
+          padding-top: 6px;
+          margin-top: 20px;
+          font-size: 20px;
+          font-weight: 500;
+        }
+        .author-box {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+
+          h2 {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

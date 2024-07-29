@@ -48,7 +48,7 @@ const EditUser = () => {
     <section>
       <div className="join">
         <div className="join-header">
-          <h1>회원 정보 수정</h1>
+          <h1>회원정보 수정</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,7 +96,7 @@ const EditUser = () => {
             </div>
           )}
 
-          <button type="submit">회원 정보 수정</button>
+          <button type="submit">회원정보 수정</button>
         </form>
         <p>
           <a href="/edituser/password">비밀번호 변경</a>

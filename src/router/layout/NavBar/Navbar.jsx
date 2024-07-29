@@ -47,7 +47,7 @@ const Navbar = () => {
         <div className="navbar-item">
           <h2>
             {isAuth ? (
-              <a onClick={handleLogout}>로그아웃</a>
+              <span onClick={handleLogout}>로그아웃</span>
             ) : (
               <a href="/login">로그인</a>
             )}

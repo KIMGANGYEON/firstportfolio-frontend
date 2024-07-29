@@ -9,3 +9,28 @@
 //pages
 @import "./router/pages/NotFound/notfound";
 @import "./router/pages/Join/join";
+
+//home
+@import "./router/pages/Home/Sections/selfdevelopment";
+
+::-webkit-scrollbar {
+  width: 10px; /* 스크롤바 너비 */
+  height: 10px; /* 가로 스크롤바 높이 */
+}
+
+/* 스크롤바의 트랙(배경) */
+::-webkit-scrollbar-track {
+  background: transparent; /* 트랙의 배경 색상 */
+  border-radius: 10px; /* 트랙의 모서리를 둥글게 */
+}
+
+/* 스크롤바 핸들(움직이는 부분) */
+::-webkit-scrollbar-thumb {
+  background: #888; /* 핸들의 배경 색상 */
+  border-radius: 10px; /* 핸들의 모서리를 둥글게 */
+}
+
+/* 핸들이 호버할 때의 색상 */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* 호버 시 핸들의 배경 색상 */
+}

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SelfDevelopment from "./Sections/SelfDevelopment";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <section>
+      <SelfDevelopment />;
+    </section>
+  );
 };
 
 export default Home;

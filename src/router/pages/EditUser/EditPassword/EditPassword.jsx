@@ -2,10 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { editUserPassword } from "../../../../store/thunkFunctions";
 
 const EditPassword = () => {
   const user = useSelector((state) => state.user?.userData);
-  console.log(user);
   const navigate = useNavigate();
   const {
     register,
@@ -16,49 +16,63 @@ const EditPassword = () => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = async ({ email, name }) => {
+  const onSubmit = async ({ oldpassword, newpassword, newpassword2 }) => {
     const id = user.id;
     const body = {
       id,
-      email,
-      name,
+      oldpassword,
+      newpassword,
+      newpassword2,
     };
 
     try {
-      //   await dispatch(editUser(body)).unwrap();
+      await dispatch(editUserPassword(body)).unwrap();
       reset();
       navigate("/");
     } catch (error) {
       console.error(error);
     }
-
-    // navigate("/");
   };
 
-  const userName = {
-    // required: "필수 필드입니다.",
+  const oldPassword = {
+    required: "필수 필드입니다.",
+    minLength: {
+      value: 6,
+      message: "최소 6자 입니다",
+    },
   };
 
-  const userEmail = {
-    // required: "필수 필드입니다.",
+  const newPassword = {
+    required: "필수 필드입니다.",
+    minLength: {
+      value: 6,
+      message: "최소 6자 입니다",
+    },
+  };
+
+  const newPassword2 = {
+    required: "필수 필드입니다.",
+    minLength: {
+      value: 6,
+      message: "최소 6자 입니다",
+    },
   };
 
   return (
     <section>
       <div className="join">
         <div className="join-header">
-          <h1>비밀 번호 변경</h1>
+          <h1>비밀번호 변경</h1>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="name">이름</label>
+          <label htmlFor="oldpassword">기존 비밀번호</label>
           <input
-            type="text"
-            id="name"
-            placeholder={user.name}
-            {...register("name", userName)}
+            type="password"
+            id="oldpassword"
+            {...register("oldpassword", oldPassword)}
           />
-          {errors?.name && (
+          {errors?.oldpassword && (
             <div>
               <span
                 style={{
@@ -68,19 +82,18 @@ const EditPassword = () => {
                   display: "inline-block",
                 }}
               >
-                {errors.name.message}
+                {errors.oldpassword.message}
               </span>
             </div>
           )}
 
-          <label htmlFor="email">이메일</label>
+          <label htmlFor="newpassword">새로운 비밀번호</label>
           <input
-            type="email"
-            id="email"
-            placeholder={user.email}
-            {...register("email", userEmail)}
+            type="password"
+            id="newpassword"
+            {...register("newpassword", newPassword)}
           />
-          {errors?.email && (
+          {errors?.newpassword && (
             <div>
               <span
                 style={{
@@ -90,16 +103,34 @@ const EditPassword = () => {
                   display: "inline-block",
                 }}
               >
-                {errors.email.message}
+                {errors.newpassword.message}
               </span>
             </div>
           )}
 
-          <button type="submit">회원 정보 수정</button>
+          <label htmlFor="newpassword2">새로운 비밀번호 확인</label>
+          <input
+            type="password"
+            id="newpassword2"
+            {...register("newpassword2", newPassword2)}
+          />
+          {errors?.newpassword2 && (
+            <div>
+              <span
+                style={{
+                  color: "red",
+                  fontSize: 18,
+                  marginTop: 4,
+                  display: "inline-block",
+                }}
+              >
+                {errors.newpassword2.message}
+              </span>
+            </div>
+          )}
+
+          <button type="submit">비밀번호 변경</button>
         </form>
-        <p>
-          <a href="/login">비밀번호 변경</a>
-        </p>
       </div>
     </section>
   );
