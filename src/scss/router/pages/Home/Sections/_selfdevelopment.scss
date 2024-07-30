@@ -1,7 +1,7 @@
 .selfdevelopment {
   @include korean;
-  margin-top: 70px;
-  padding-left: 100px;
+  margin-top: 30px;
+  padding-left: 300px;
   width: 100%;
   padding-right: 10px;
   .selfdevelopment-title {
@@ -24,15 +24,20 @@
   }
   .scroll-box {
     overflow-x: scroll;
+    height: 55vh;
     overflow-y: hidden;
+    padding: 5px;
     .selfdevelopment-box {
       display: flex;
-      width: 550vw;
+      flex-wrap: nowrap;
+
+      height: 100%;
       gap: 10px;
       .book-box {
         padding: 15px;
         border: 3px solid black;
-        width: 100vw;
+        width: 21vw;
+        height: 100%;
         position: relative;
         cursor: pointer;
         img {

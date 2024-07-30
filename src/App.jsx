@@ -14,6 +14,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotAuthRoutes from "./components/NotAuthRoutes";
 import EditUser from "./router/pages/EditUser/EditUser";
 import EditPassword from "./router/pages/EditUser/EditPassword/EditPassword";
+import ProductDetail from "./router/pages/ProtectedPage/ProductDetail/ProductDetail";
 
 function Layout() {
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/product/detail/:id" element={<ProductDetail />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

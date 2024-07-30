@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import HorizontalScroll from "react-horizontal-scrolling";
 import { Link } from "react-router-dom";
 
-const SelfDevelopment = () => {
+const Novel = () => {
   const scrollRef = useRef(null);
   const [selfDevelopment, setSelfDevelopment] = useState([]);
   const getNaverBook = async () => {
     try {
       const response = await axios.get("/v1/search/book.json", {
-        params: { query: "자기계발", display: 15, start: 1, srot: "sim" },
+        params: { query: "소설", display: 15, start: 1, srot: "sim" },
         headers: {
           "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
@@ -44,7 +45,7 @@ const SelfDevelopment = () => {
   return (
     <div className="selfdevelopment">
       <div className="selfdevelopment-title">
-        <h1>자기개발</h1>
+        <h1>소설</h1>
       </div>
       <div className="scroll-box" ref={scrollRef}>
         <div className="selfdevelopment-box">
@@ -65,4 +66,4 @@ const SelfDevelopment = () => {
   );
 };
 
-export default SelfDevelopment;
+export default Novel;
