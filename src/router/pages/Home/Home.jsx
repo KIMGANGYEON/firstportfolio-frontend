@@ -7,9 +7,9 @@ import Used from "./Sections/Used";
 const Home = () => {
   return (
     <section>
+      <Used />
       <SelfDevelopment />
       <Novel />
-      <Used />
     </section>
   );
 };
