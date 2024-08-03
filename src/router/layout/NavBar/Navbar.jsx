@@ -32,6 +32,9 @@ const Navbar = () => {
             <h2>
               <a href="/edituser">내 정보 수정</a>
             </h2>
+            <h2>
+              <a href="/product/upload">내 상품 업로드</a>
+            </h2>
             <h2>내 상품 수정</h2>
             <h2>장바구니</h2>
             <h2>주문내역</h2>

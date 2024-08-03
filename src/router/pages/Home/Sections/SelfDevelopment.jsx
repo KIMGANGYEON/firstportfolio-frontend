@@ -8,7 +8,7 @@ const SelfDevelopment = () => {
   const getNaverBook = async () => {
     try {
       const response = await axios.get("/v1/search/book.json", {
-        params: { query: "자기계발", display: 15, start: 1, srot: "sim" },
+        params: { query: "자기계발", display: 20, start: 1, srot: "sim" },
         headers: {
           "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,

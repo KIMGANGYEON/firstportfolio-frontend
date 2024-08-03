@@ -14,7 +14,11 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import NotAuthRoutes from "./components/NotAuthRoutes";
 import EditUser from "./router/pages/EditUser/EditUser";
 import EditPassword from "./router/pages/EditUser/EditPassword/EditPassword";
-import ProductDetail from "./router/pages/ProtectedPage/ProductDetail/ProductDetail";
+import ProductDetail from "./router/pages/ProductPage/ProductDetail/ProductDetail";
+import UploadProductPage from "./router/pages/ProductPage/UploadProductPage/UploadProductPage";
+import CartPage from "./router/pages/Cart/CartPage";
+import History from "./router/pages/History/History";
+import EditProduct from "./router/pages/ProductPage/EditProduct/EditProduct";
 
 function Layout() {
   return (
@@ -56,12 +60,17 @@ function App() {
           <Route path="/protected" element={<ProtectedPage />} />
           <Route path="/edituser" element={<EditUser />} />
           <Route path="/edituser/password" element={<EditPassword />} />
+          <Route path="/product/upload" element={<UploadProductPage />} />
+          <Route path="/product/edit/:id" element={<EditProduct />} />
+          <Route path="/user/cart" element={<CartPage />} />
+          <Route path="/history" element={<History />} />
         </Route>
+
+        <Route path="/product/detail/:id" element={<ProductDetail />} />
 
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
-          <Route path="/product/detail/:id" element={<ProductDetail />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

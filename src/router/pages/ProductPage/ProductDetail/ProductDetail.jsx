@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const ProductDetail = () => {
   const { id } = useParams();
   const [book, setBook] = useState([]);
+
   const getIdBook = async () => {
     try {
       const response = await axios.get("/v1/search/book.json", {
@@ -21,7 +22,6 @@ const ProductDetail = () => {
     }
   };
 
-  console.log(book[0]);
   useEffect(() => {
     getIdBook();
   }, []);

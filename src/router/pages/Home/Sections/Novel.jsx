@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import HorizontalScroll from "react-horizontal-scrolling";
 import { Link } from "react-router-dom";
 
 const Novel = () => {
@@ -9,7 +8,7 @@ const Novel = () => {
   const getNaverBook = async () => {
     try {
       const response = await axios.get("/v1/search/book.json", {
-        params: { query: "소설", display: 15, start: 1, srot: "sim" },
+        params: { query: "소설", display: 20, start: 1, srot: "sim" },
         headers: {
           "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
@@ -52,7 +51,7 @@ const Novel = () => {
           {selfDevelopment.map((book) => (
             <Link to={`/product/detail/${book.isbn}`} key={book.isbn}>
               <div className="book-box">
-                <img src={book.image} />
+                <img src={book.image} alt="" />
                 <h1>{book.title}</h1>
                 <div className="author-box">
                   <h2>{book.author}</h2>
