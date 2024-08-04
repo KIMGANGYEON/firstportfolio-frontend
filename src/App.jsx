@@ -19,6 +19,9 @@ import UploadProductPage from "./router/pages/ProductPage/UploadProductPage/Uplo
 import CartPage from "./router/pages/Cart/CartPage";
 import History from "./router/pages/History/History";
 import EditProduct from "./router/pages/ProductPage/EditProduct/EditProduct";
+import UsedProduct from "./router/pages/ProductPage/UsedProduct/UsedProduct";
+import NewSearch from "./router/pages/Search/NewSearch/NewSearch";
+import UsedSearch from "./router/pages/Search/UsedSearch/UsedSearch";
 
 function Layout() {
   return (
@@ -67,6 +70,9 @@ function App() {
         </Route>
 
         <Route path="/product/detail/:id" element={<ProductDetail />} />
+        <Route path="/product/used/detail/:id" element={<UsedProduct />} />
+        <Route path="/search/new/:id" element={<NewSearch />} />
+        <Route path="/search/used/:id" element={<UsedSearch />} />
 
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/login" element={<Login />} />
