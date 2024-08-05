@@ -9,7 +9,7 @@ const Used = () => {
   const fetchProducts = async () => {
     try {
       const response = await axiosInstance.get("/products/get");
-      setProduct(response.data.products);
+      setProduct(response.data.products.slice(0, 20));
     } catch (error) {
       console.error(error);
     }

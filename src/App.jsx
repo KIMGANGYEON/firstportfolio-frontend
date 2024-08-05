@@ -71,8 +71,8 @@ function App() {
 
         <Route path="/product/detail/:id" element={<ProductDetail />} />
         <Route path="/product/used/detail/:id" element={<UsedProduct />} />
-        <Route path="/search/new/:id" element={<NewSearch />} />
-        <Route path="/search/used/:id" element={<UsedSearch />} />
+        <Route path="/search/new" element={<NewSearch />} />
+        <Route path="/search/used" element={<UsedSearch />} />
 
         <Route element={<NotAuthRoutes isAuth={isAuth} />}>
           <Route path="/login" element={<Login />} />

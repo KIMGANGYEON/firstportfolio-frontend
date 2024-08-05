@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import SelfDevelopment from "./Sections/SelfDevelopment";
 import Novel from "./Sections/Novel";
 import Used from "./Sections/Used";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { searchState } from "../../../atom";
 
 const Home = () => {
-  const [searchData, setSearchData] = useState("");
   const [search, setSearch] = useState(true);
+  const navigate = useNavigate();
   const [moveRight, setMoveRight] = useState(600);
   const showSearch = () => {
     setMoveRight((prevMoveRight) => (prevMoveRight === 600 ? 420 : 600));
@@ -23,11 +25,16 @@ const Home = () => {
   };
 
   const handleChange = (event) => {
-    setSearchData(event.target.value);
+    localStorage.setItem("searchWord", event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (search == true) {
+      navigate("/search/used");
+    } else {
+      navigate("/search/new");
+    }
   };
 
   return (
@@ -44,16 +51,11 @@ const Home = () => {
             required
             placeholder="책 제목을 입력하세요"
             onChange={handleChange}
-            value={searchData}
           />
           {search ? (
-            // <Link to={`search/used/${123}`}>
             <button type="submit">중고검색</button>
           ) : (
-            // </Link>
-            // <Link to={`search/new/${456}`}>
             <button type="submit">새책검색</button>
-            // </Link>
           )}
         </form>
       </div>
