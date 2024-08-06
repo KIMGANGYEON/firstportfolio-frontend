@@ -18,6 +18,10 @@
 //product
 @import "./router/pages/ProductPage/ProductDetailPage/productdetailpage";
 @import "./router/pages/ProductPage/UploadProduct/uploadproduct";
+@import "./router/pages/ProductPage/ProductDetailPage/usedproductdetail";
+
+//search
+@import "./router/pages/Search/searchNew";
 
 ::-webkit-scrollbar {
   width: 10px; /* 스크롤바 너비 */
