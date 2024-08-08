@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addToCart,
   authUser,
   editUser,
   editUserPassword,
+  getCartItems,
   joinUser,
   loginUser,
   logoutUser,
+  removeCartItem,
 } from "./thunkFunctions";
 import { toast } from "react-toastify";
 
@@ -113,6 +116,48 @@ const userSlice = createSlice({
         toast.info("비밀번호가 수정되었습니다");
       })
       .addCase(editUserPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      })
+      //Addcart
+      .addCase(addToCart.pending, (state) => {
+        state.isAuth = true;
+      })
+      .addCase(addToCart.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.userData.cart = action.payload;
+        toast.info("장바구니에 추가되었습니다");
+      })
+      .addCase(addToCart.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      })
+      //getCart
+      .addCase(getCartItems.pending, (state) => {
+        state.isAuth = true;
+      })
+      .addCase(getCartItems.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.cartDetail = action.payload;
+      })
+      .addCase(getCartItems.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        toast.error(action.payload);
+      })
+      //removeCartItem
+      .addCase(removeCartItem.pending, (state) => {
+        state.isAuth = true;
+      })
+      .addCase(removeCartItem.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.cartDetail = action.payload.productInfo;
+        state.userData.cart = action.payload.cart;
+        toast.info("상품이 장바구니에서 제거되었습니다");
+      })
+      .addCase(removeCartItem.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         toast.error(action.payload);

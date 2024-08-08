@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../../store/thunkFunctions";
 
 const UsedProduct = () => {
   const { id } = useParams();
@@ -43,6 +45,11 @@ const UsedProduct = () => {
     }
   }, [imagesCount]);
 
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(addToCart({ productId: id }));
+  };
+
   return (
     <section className="usedproduct-detail">
       <div className="usedproduct-detail-box">
@@ -71,8 +78,8 @@ const UsedProduct = () => {
       <div className="usedproduct-btn">
         <h4>{book?.discount}원</h4>
         <button>수량</button>
-        <button>장바구니 담기</button>
-        <button>구매하기</button>
+        <button onClick={handleClick}>장바구니 담기</button>
+        <button>구매하기기</button>
       </div>
     </section>
   );

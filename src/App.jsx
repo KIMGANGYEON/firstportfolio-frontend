@@ -18,10 +18,11 @@ import ProductDetail from "./router/pages/ProductPage/ProductDetail/ProductDetai
 import UploadProductPage from "./router/pages/ProductPage/UploadProductPage/UploadProductPage";
 import CartPage from "./router/pages/Cart/CartPage";
 import History from "./router/pages/History/History";
-import EditProduct from "./router/pages/ProductPage/EditProduct/EditProduct";
 import UsedProduct from "./router/pages/ProductPage/UsedProduct/UsedProduct";
 import NewSearch from "./router/pages/Search/NewSearch/NewSearch";
 import UsedSearch from "./router/pages/Search/UsedSearch/UsedSearch";
+import EditUserProduct from "./router/pages/EditUser/EditUserProduct/EditUserProduct";
+import EditProductDetail from "./router/pages/EditUser/EditUserProduct/EditProductDetail";
 
 function Layout() {
   return (
@@ -64,8 +65,12 @@ function App() {
           <Route path="/edituser" element={<EditUser />} />
           <Route path="/edituser/password" element={<EditPassword />} />
           <Route path="/product/upload" element={<UploadProductPage />} />
-          <Route path="/product/edit/:id" element={<EditProduct />} />
-          <Route path="/user/cart" element={<CartPage />} />
+          <Route path="/users/edit/product" element={<EditUserProduct />} />
+          <Route
+            path="/users/edit/product/:id"
+            element={<EditProductDetail />}
+          />
+          <Route path="/users/cart" element={<CartPage />} />
           <Route path="/history" element={<History />} />
         </Route>
 

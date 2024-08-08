@@ -1,0 +1,21 @@
+.edit_user_product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  .edit_user_product_box {
+    width: 500px;
+    .item_box {
+      div {
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        cursor: pointer;
+        img {
+          width: 400px;
+        }
+      }
+    }
+  }
+}

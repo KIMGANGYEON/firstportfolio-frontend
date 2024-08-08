@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 const UsedSearch = () => {
   const searchWord = localStorage.getItem("searchWord");
   const [searchResults, setSearchResults] = useState([]);
+  const [more, setMore] = useState(2);
   const getSearch = async () => {
     try {
       const response = await axios.post(
@@ -25,6 +26,10 @@ const UsedSearch = () => {
     getSearch();
   }, []);
 
+  const loadMore = () => {
+    setMore((prev) => (prev += 2));
+  };
+
   return (
     <section className="search-new">
       {searchResults.length === 0 ? (
@@ -36,7 +41,7 @@ const UsedSearch = () => {
           <div className="new-header">
             <h1>검색결과</h1>
           </div>
-          {searchResults?.map((book, index) => (
+          {searchResults.slice(0, more)?.map((book, index) => (
             <div key={book.id} className="new-book-box">
               <div className="new-book-img">
                 <Link to={`/product/used/detail/${book._id}`}>
@@ -59,7 +64,7 @@ const UsedSearch = () => {
             </div>
           ))}
           <div className="new-book-btn">
-            <button>더보기</button>
+            <button onClick={loadMore}>더보기</button>
           </div>
         </div>
       )}
